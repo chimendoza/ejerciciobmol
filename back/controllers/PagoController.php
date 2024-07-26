@@ -19,8 +19,11 @@ class PagoController extends ActiveController
     public function actionObtenercatalogos(){
 
         $usuarios=Usuario::find()->all();
-        $cuentas=Cuenta::find()->all();
+        $cuentas=Cuenta::find()->with('usuario')->asArray()->all();
         $tipopagos=Tipopago::find()->all();
+
+        
+        
 
         return compact('usuarios','cuentas','tipopagos');
     }

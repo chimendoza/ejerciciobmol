@@ -22,7 +22,7 @@
                           <div class="form-group row">
                             <label class="col-form-label">Usuario</label>
                             <div class="col-sm-9">
-                              <FormControl :type="'select'" :options="usuarios" v-model="modelValue.usuario_id" :error="$parent._errors.usuario_id" :required="true"/>
+                             {{ nombreempleado }}
                             </div>
                           </div>
                         </div>
@@ -103,7 +103,8 @@
 
           cuentas:[],
           usuarios:[],
-          tipopagos:[]
+          tipopagos:[],
+          nombreempleado:'Selecciona la cuenta'
 
         }
 
@@ -115,6 +116,26 @@
           default:{}
         }
       },
+
+      methods:{
+        
+        updateEmployeName(id){
+
+          let c=this.cuentas.find(e=>e.id==id);
+
+          this.nombreempleado=this.concatEmployeName(c.usuario);
+
+            
+        },
+        concatEmployeName(c){
+
+            return c.nombre+' '+c.apellido_paterno+' '+c.apellido_materno;
+
+        }
+        
+      },
+
+      
       mounted(){
 
         this.$api.get('/pagos/obtenercatalogos').then(response=>{
@@ -126,6 +147,17 @@
 
 
         });
+
+      },
+      watch:{
+
+          'modelValue.cuenta_id':{
+            handler(v){
+              this.updateEmployeName(v);
+            },
+            deep:true
+
+          }
 
       }
 

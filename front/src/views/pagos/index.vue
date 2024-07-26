@@ -22,11 +22,12 @@
 
 
 
-            <InteracTable :route="'/pagos?expand=cuenta,usuario,tipopago'">
+            <InteracTable :route="'/pagos?expand=cuenta,cuenta.usuario,tipopago'">
 
               <template v-slot:headers>
                   <th>ID</th>
                   <th>Usuario</th>
+                  <th>Cantidad</th>
                   <th>Cuenta</th>
                   <th>Tipo de pago</th>
                   <th>Fecha del pago</th>
@@ -34,7 +35,8 @@
 
               <template v-slot:row="item">
                   <td>{{item.id}}</td>
-                  <td><img src="@/assets/images/faces-clipart/pic-1.png"/> {{ item.usuario.nombre }} {{ item.usuario.apellido_paterno }} {{ item.usuario.apellido_materno }}</td>
+                  <td><img src="@/assets/images/faces-clipart/pic-1.png"/> {{ item.cuenta.usuario.nombre }} {{ item.cuenta.usuario.apellido_paterno }} {{ item.cuenta.usuario.apellido_materno }}</td>
+                  <td>{{ item.cantidad }}</td>
                   <td>{{ item.cuenta.no_cuenta }}</td>
                   <td>{{ item.tipopago.nombre }}</td>
                   <td>{{ item.fecha_pago }}</td>

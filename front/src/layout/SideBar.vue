@@ -26,7 +26,7 @@
             </li>
             <li class="nav-item">
               <router-link to="/usuarios" class="nav-link">
-                <span class="menu-title">Usuarios</span>
+                <span class="menu-title">Empleados</span>
                 <i class="mdi mdi-account menu-icon"></i>
               </router-link>
             </li>

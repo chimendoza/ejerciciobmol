@@ -7,7 +7,7 @@
 
 
         <form class="form-sample" @submit.prevent="saveModel">
-                      <p class="card-description"> Datos del usuario </p>
+                      <p class="card-description"> Datos del empleado </p>
                       <div class="row">
                         <div class="col-md-4">
                           <div class="form-group row">

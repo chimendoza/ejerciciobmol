@@ -14,6 +14,7 @@
                             <label class="col-form-label">Empleado</label>
                             <div class="col-sm-9">
                               <FormControl :type="'select'" v-model="modelValue.usuario_id" :error="$parent._errors.usuario_id" :required="false" :options="usuarios"/>
+ 
                             </div>
                           </div>
                         </div>
@@ -116,18 +117,22 @@
 
     
 
-
+    import SearchField from '@/components/SearchField.vue';
     export default{
 
 
       name:"clientForm",
+      components:{
+        SearchField
+      },
 
       data(){
 
         return {
 
           usuarios:[],
-          tiposcuenta:[{id:1,nombre:'Debito'},{id:2,nombre:'Crédito'}]
+          tiposcuenta:[{id:1,nombre:'Debito'},{id:2,nombre:'Crédito'}],
+          
 
         }
 
@@ -139,6 +144,7 @@
           default:{}
         }
       },
+
 
       mounted(){
 
